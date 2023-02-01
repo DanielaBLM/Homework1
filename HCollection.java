@@ -42,10 +42,10 @@ public interface HCollection {
 	int size();
 	
 	//Returns an array containing all of the elements in this collection.
-    Object[] 	toArray();
+    	Object[] toArray();
    
-    //Returns an array containing all of the elements in this collection; the runtime type of the returned array is that of the specified arr
-    Object[] toArray(Object[] a);
+    	//Returns an array containing all of the elements in this collection; the runtime type of the returned array is that of the specified arr
+    	Object[] toArray(Object[] a);
     
 
 	
