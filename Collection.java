@@ -22,10 +22,10 @@ public class Collection implements HCollection{
 	}
 
 	@Override
-	public boolean addAll(HCollection c) {
+	public boolean addAll(HCollection c) throws NullPointerException{
 		Object temp;
 		HIterator it = c.iterator();
-		if(c.isEmpty()) throw new NullPointerException();
+		if(c.equals(null)) throw new NullPointerException();
 		while (it.hasNext()){
 			temp = it.next();
 			if(temp.equals(null)) throw new NullPointerException();
@@ -43,7 +43,7 @@ public class Collection implements HCollection{
 	}
 
 	@Override
-	public boolean contains(Object o) {
+	public boolean contains(Object o) throws NullPointerException{
 		if(o.equals(null)) throw new NullPointerException();
 	    else {
 	    	return vettore.contains(o);
@@ -51,10 +51,10 @@ public class Collection implements HCollection{
 	}
 
 	@Override
-	public boolean containsAll(HCollection c) {
+	public boolean containsAll(HCollection c) throws NullPointerException{
 		Object temp;
 		HIterator it = c.iterator();
-		if(c.isEmpty()) throw new NullPointerException();
+		if(c.equals(null)) throw new NullPointerException();
 		while (it.hasNext()){
 			temp = it.next();
 			if(temp.equals(null)) throw new NullPointerException();
@@ -64,6 +64,11 @@ public class Collection implements HCollection{
 		}
 		
 		return true;
+	}
+	
+	@Override
+	public int hashCode() {
+		return vettore.hashCode();
 	}
 
 	@Override
@@ -78,7 +83,7 @@ public class Collection implements HCollection{
 	}
 
 	@Override
-	public boolean remove(Object o) {
+	public boolean remove(Object o) throws NullPointerException{
 		if(o.equals(null)) throw new NullPointerException();
 	    else {
 	    	if(!contains(o)) return false;
@@ -87,10 +92,10 @@ public class Collection implements HCollection{
 	}
 
 	@Override
-	public boolean removeAll(HCollection c) {
+	public boolean removeAll(HCollection c) throws NullPointerException{
 		Object temp;
 		HIterator it = c.iterator();
-		if(c.isEmpty()) throw new NullPointerException();
+		if(c.equals(null)) throw new NullPointerException();
 		while (it.hasNext()){
 			temp = it.next();
 			if(temp.equals(null)) throw new NullPointerException();
@@ -102,17 +107,15 @@ public class Collection implements HCollection{
 	}
 
 	@Override
-	public boolean retainAll(HCollection c) {
-		Object temp;
-		HIterator it = c.iterator();
-		if(c.isEmpty()) throw new NullPointerException();
-		while (it.hasNext()){
+	public boolean retainAll(HCollection c) throws NullPointerException{
+		/*Object temp;
+		HIterator it = iterator();
+		if(c.equals(null)) throw new NullPointerException();
+		//if(c.contains(null)) throw new NullPointerException();
+		while(it.hasNext()) {
 			temp = it.next();
-			if(temp.equals(null)) throw new NullPointerException();
-			if(!contains(temp)) {
-				return false;
-			}
-		}
+			if(!c.contains(temp)) remove(temp);
+		}*/
 		return true;
 	}
 
@@ -123,14 +126,22 @@ public class Collection implements HCollection{
 
 	@Override
 	public Object[] toArray() {
-		// TODO Auto-generated method stub
-		return null;
+		int index = 0;
+	    Object[] stack = new Object[size()];
+	    HIterator iterator = iterator();
+	    while(iterator.hasNext()) stack[index++] = iterator.next();
+	    return stack;
 	}
 
 	@Override
 	public Object[] toArray(Object[] a) {
-		// TODO Auto-generated method stub
-		return null;
+		if(size() > a.length) return toArray();
+	    else {
+	      int index = 0;
+	      HIterator iterator = iterator();
+	      while(iterator.hasNext()) a[index++] = iterator.next();
+	      return a;
+	    }
 	}
 	
 	
