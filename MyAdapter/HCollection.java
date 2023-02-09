@@ -1,4 +1,5 @@
-package MyAdapter;
+package myAdapter;
+
 
 public interface HCollection {
 	
@@ -10,8 +11,8 @@ public interface HCollection {
 	 * @return true if this collection changed as a result of the call 
 	 * @throws UnsupportedOperationException - add is not supported by this collection. 
    	 * @throws ClassCastException - class of the specified element prevents it from being added to this collection. 
-     * @throws NullPointerException - if the specified element is null and this collection does not support null elements. 
-     * @throws IllegalArgumentException - some aspect of this element prevents it from being added to this collection.*/
+    	 * @throws NullPointerException - if the specified element is null and this collection does not support null elements. 
+    	 * @throws IllegalArgumentException - some aspect of this element prevents it from being added to this collection.*/
 	boolean	add(Object o) throws UnsupportedOperationException, ClassCastException, NullPointerException, IllegalArgumentException;
     
 	
@@ -20,12 +21,12 @@ public interface HCollection {
 	 * @param c
 	 * @return true if this collection changed as a result of the call 
 	 * @throws UnsupportedOperationException - if this collection does not support the addAll method. 
-     * @throws ClassCastException - if the class of an element of the specified collection prevents it 
-     * 		   from being added to this collection. 
-     * @throws NullPointerException - if the specified collection contains one or more null elements and 
-     *		   this collection does not support null elements, or if the specified collection is null. 
-     * @throws IllegalArgumentException - some aspect of an element of the specified collection prevents 
-     *		   it from being added to this collection.*/
+     	 * @throws ClassCastException - if the class of an element of the specified collection prevents it 
+    	 * from being added to this collection. 
+    	 * @throws NullPointerException - if the specified collection contains one or more null elements and 
+     	 * this collection does not support null elements, or if the specified collection is null. 
+     	 * @throws IllegalArgumentException - some aspect of an element of the specified collection prevents 
+      	 * it from being added to this collection.*/
 	boolean addAll(HCollection c) throws UnsupportedOperationException, ClassCastException, NullPointerException, IllegalArgumentException;;
    
 	
@@ -54,9 +55,9 @@ public interface HCollection {
 	 * @return true if this collection contains all of the elements in the specified collection 
 	 * @throws ClassCastException - if the types of one or more elements in the specified collection are 
 	 * 		   incompatible with this collection (optional). 
-     * @throws NullPointerException - if the specified collection contains one or more null elements and 
-     *		   this collection does not support null elements (optional). 
-     * @throws NullPointerException - if the specified collection is null. */
+     	* @throws NullPointerException - if the specified collection contains one or more null elements and 
+     	*		   this collection does not support null elements (optional). 
+      	* @throws NullPointerException - if the specified collection is null. */
 	boolean containsAll(HCollection c) throws ClassCastException, NullPointerException;
 	
 	
