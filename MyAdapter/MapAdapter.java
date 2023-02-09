@@ -1,4 +1,4 @@
-package MyAdapter;
+package myAdapter;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.NoSuchElementException;
@@ -83,13 +83,16 @@ public class MapAdapter implements HMap{
 	@Override
 	public Object remove(Object key) throws NullPointerException, ClassCastException{
 		IsNotNull(key);
+		if(!mappa.containsKey(key)) return null;
 		return mappa.remove(key);
 		
 	}
 
 	@Override
 	public int size() {
-		return mappa.size();
+		if(mappa.size() > Integer.MAX_VALUE) return Integer.MAX_VALUE;
+		else return mappa.size();
+		
 	}
 
 	@Override
@@ -366,7 +369,6 @@ public class MapAdapter implements HMap{
 			MapAdapter.this.clear();
 		}
 		
-		//i due set sono uguali solo se i loro elementi sono anche nello stesso ordine
 		public boolean equals(Object obj) {
 			KeySet temp;
 			try {
@@ -493,11 +495,6 @@ public class MapAdapter implements HMap{
 			public Object next() throws NoSuchElementException {
 				return ((HMap.Entry)super.next()).getValue();
 			}
-			
 		}
-		
 	}
-
-	
-	
 }
